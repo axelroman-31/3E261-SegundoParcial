@@ -1,27 +1,24 @@
-#pragma once
-#include <EstadoFoco.hpp>
+@startuml foco
 
-class Foco
-{
-private:
-    EstadoFoco encendido;
-    
-public:
-    Foco() 
-    {
-        this->encendido = true;
-    }
-    ~Foco() {}
-    void Encender() 
-    {
-        this->encendido = true;
-    }
-    void Apagar() 
-    {
-        this->encendido = false;
-    }
+class Usuario
 
-    EstadoFoco LeerEstado() {
-        return this->encendido;
-    }
-};
+class Foco {
+- EstadoFoco estado
++ Encender()
++ Apagar()
++ LeerEstado() : EstadoFoco
+}
+
+class EstadoFoco 
+class SerieFocos {
+    - Foco focos[10]
+    + MostrarFocos()
+    + EncenderFocos()
+    + ApagarFocos()
+}
+
+Usuario o-- Foco
+Foco *-- EstadoFoco
+EstadoFoco --|> Booleano
+SerieFocos "1" *-- "10" Foco
+Usuario o-- SerieFocos
