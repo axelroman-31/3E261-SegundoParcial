@@ -1,28 +1,27 @@
 #pragma once
 #include <EstadoFoco.hpp>
 
-
-
-çlass Foco
+class Foco
 {
-    private:
-        EstadoFoco estado;
-        
-    public:
-        Foco(){
-            this->encendido=true
-        }    
-        
-        ~Foco(){}
+private:
+    EstadoFoco encendido;
+    
+public:
+    Foco() 
+    {
+        this->encendido = true;
+    }
+    ~Foco() {}
+    void Encender() 
+    {
+        this->encendido = true;
+    }
+    void Apagar() 
+    {
+        this->encendido = false;
+    }
 
-        void Encender(){
-            this-> encendido = true;
-        }
-        void Apagar(){
-            this->encendido = false 
-        }
-
-        EstadoFoco LeerEstado(){
-            return this->encendido;
-        }
+    EstadoFoco LeerEstado() {
+        return this->encendido;
+    }
 };
