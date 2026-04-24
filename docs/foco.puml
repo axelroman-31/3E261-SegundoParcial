@@ -1,4 +1,3 @@
-@startuml
 @startuml foco
 
 class Usuario
@@ -10,11 +9,17 @@ class Foco {
 + LeerEstado() : EstadoFoco
 }
 
-class EstadoFoco
 class EstadoFoco 
+class SerieFocos {
+    - Foco focos[10]
+    + MostrarFocos()
+    + EncenderFocos()
+    + ApagarFocos()
+}
 
 Usuario o-- Foco
 Foco *-- EstadoFoco
 EstadoFoco --|> Booleano
-
-@enduml
+EstadoFoco --|> Texto
+SerieFocos "1" *-- "10" Foco
+Usuario o-- SerieFocos
